@@ -1,0 +1,44 @@
+<html>
+    <head> 
+        <title> Login Page </title>
+    <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.1/angular.min.js'></script>
+        <link rel="stylesheet" href="main.css">
+        
+    <script type='text/javascript'>//<![CDATA[
+    function LoginController($scope) {
+        $scope.logins = [];
+        $scope.login = function (user, pwd) {
+            localStorage.setItem("name" , user);
+        };
+    }
+    //]]>
+    </script>
+    </head>  
+
+    <body >
+        <div ng-app ng-controller="LoginController">
+        <div id="main" bgcolor = "#A9E2F3"> 
+        <h2 align="center"> Get Directions..
+        </h2>
+    
+        <div id="login" align="center">
+        Username: <input id="usr" ng-model="user.name" type="text"></input><br/>
+        <br></br>
+        
+        Password: <input class="pwd" ng-model="user.pwd" type="password"></input><br/>
+        <br></br>
+
+        <input type="button" ng-click="login(user.name, user.pwd)" class="btn"  value="Login"                                 onclick="window.location.href='home.html'" > 
+        </div>
+            
+<br></br>
+
+            </div>  
+        </div>
+    </body>
+</html>
