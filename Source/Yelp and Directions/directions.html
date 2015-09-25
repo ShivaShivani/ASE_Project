@@ -17,16 +17,11 @@
     </style>
 </head>
 
-<body align= "center" ng-init="calcRoute()">
+<body align= "center">
 
-<div class="wrapp" ng-controller="googlemapoutput">
-         <div class="row">
-                <input type="text"  ng-model="endlocation" id="endlocation" /> 
-                <button id="btn" ng-click="calcRoute()">
-                    Get Direction
-                </button>
-                 <br/></br>
-            </div>
+<div class="wrapp" ng-controller="googlemapoutput" >
+    <br/>
+    <br/>
             <div id="map-canvas" style="height: 400px; float: left;"></div>
             <div id="panel" style="width: 400px; float: right;"></div> 
         </div>
@@ -39,7 +34,8 @@
     var query = window.location.search.substring(1);
     var address=query.split("=");
     //alert(address[1]);
-    var ad=decodeURIComponent(address[1])
+    var ad=decodeURIComponent(address[1]);
+    alert(ad);
 angular.module('GoogleDirection', [])
 .controller('googlemapoutput', function ($scope) {
 
@@ -69,10 +65,29 @@ angular.module('GoogleDirection', [])
             };
         
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            
+            //Route Calculation
+            
+             directionsDisplay.setPanel(document.getElementById('panel'));
+              var end=ad;
+        var request = {
+            origin: $scope.currentLocation,
+            destination: end,
+            travelMode: google.maps.TravelMode.DRIVING
+        };
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setMap(map);
+                    directionsDisplay.setDirections(response);
+                    console.log(status);
+                }
+           
+        });
         });
      };
      
-    directionsDisplay.setPanel(document.getElementById('panel'));
+  //  directionsDisplay.setPanel(document.getElementById('panel'));
     $scope.calcRoute = function () {
        // var end = document.getElementById('endlocation').value;
         var end=ad;

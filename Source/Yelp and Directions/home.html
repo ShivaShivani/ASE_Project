@@ -12,11 +12,6 @@
         <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
         <script type="text/javascript">
             
-             function LocationManager($scope) {
-                 $scope.loca = function (locat) {
-                localStorage.setItem("location" , location);
-                 };
-             }
               function Load($scope) {
                   $scope.logins = [];
                   $scope.login = function () {
@@ -87,8 +82,8 @@
                                 var location = item.location.display_address;
                                 var ratings = "<img src="+item.rating_img_url+">"+"</img>";
                                 var image = "<img src="+item.image_url+">"+"</img>";
-                                $("#results").append("<p>"+item.name+"</p>"+image+"<p>"+phone+"</p>"+"<a href=\"directions.html?address="+location+"\">"+location+"</a>"+"<p>"+ratings+"</p>"+"</div>");
-                                     //  $("#results").append("<p>"+item.name+"</p>"+image+"<p>"+phone+"</p>"+"<a href=\"directions.html\">"+location+"</a>"+"<p>"+ratings+"</p>");
+                                $("#results").append("<p>"+item.name+"</p>"+image+"<p>"+phone+"</p>"+"<a href=\"directions.html?address="+item.name+" "+location+"\">"+location+"</a>"+"<p>"+ratings+"</p>"+"</div>");
+                                     
                                 
                                
                             }
